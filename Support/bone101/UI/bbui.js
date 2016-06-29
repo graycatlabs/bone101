@@ -589,6 +589,8 @@ var UI = (function() {
                 }
             }
 
+            button.off();
+
             return button;
         })();
 
