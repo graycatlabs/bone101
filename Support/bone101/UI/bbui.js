@@ -126,7 +126,6 @@ var UI = (function() {
             x: rect.x + 35,
             y: rect.y + 25
         };
-        var graphLinePos = BBposY + 40;
 
         // major buttons
         ui.button = (function() {
@@ -467,16 +466,6 @@ var UI = (function() {
                 var button = buttons[probeIndex];
                 delete buttons[probeIndex];
                 return button;
-            };
-
-            button.drawToGraph = function(btn){
-                canvas.BTN.ctx.beginPath();
-                canvas.BTN.ctx.moveTo(BBposX+309,graphLinePos);
-                canvas.BTN.ctx.lineTo(BBposX+340,graphLinePos);
-                canvas.BTN.ctx.strokeStyle = pin[btn.pinNum].color;
-                canvas.BTN.ctx.lineWidth = 2;
-                canvas.BTN.ctx.stroke();
-                graphLinePos += 4;
             };
 
             button.get = function() {
@@ -1444,10 +1433,8 @@ var Events = (function() {
 
     function pinSelected(event) {
         listen(false, 'selectPin');
-        listen(true, 'btnInfo');
         e.ui.loop.clearProbe();
-        listen(false, 'pinSelected');
-        e.ui.loop.clear(); 
+        listen(true, 'btnInfo');
     }
 
     function slideBar(event) {
